@@ -11,6 +11,7 @@ from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D
 
 
 
+
 class MultiHeadAttention(tf.keras.layers.Layer):
     def __init__(self, d_model, num_heads):
         super(MultiHeadAttention, self).__init__()
