@@ -82,14 +82,14 @@ class EncoderLayer(tf.keras.layers.Layer):
         super(EncoderLayer, self).__init__()
 
         self.mha = MultiHeadAttention(d_model, num_heads)
-        self.ffn = point_wise_feed_forward_natwork(d_model, dff)
+        self.ffn = point_wise_feed_forward_network(d_model, dff)
         self.layernorm1 = tf.keras.layers.Normalization()
         self.layernorm2 = tf.keras.layers.Normalization()
         self.dropout1 = tf.keras.layers.Dropout(rate = rate)
         self.dropout2 = tf.keras.layers.Dropout(rate = rate)
     def call(self, x, training , mask):
 
-        mha_out = self.mha(x,x,x,mask)
+        mha_out = self.mha(x,x,x,mask=mask)
 
         x = self.layernorm1(x + self.dropout1(mha_out, training = training))
 
