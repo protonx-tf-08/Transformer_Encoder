@@ -12,21 +12,21 @@ class TransformerClassifier(tf.keras.Model):
         self.dropout = tf.keras.layers.Dropout(rate = rate)
         self.global_average_pooling = tf.keras.layers.GlobalAveragePooling1D()
         self.final_layers = tf.keras.layers.Dense(1, 'sigmoid')
-
-    def call(self,x , training):
+        
+    def call(self, x, training):
 
         embedded_sequences = self.embedding(x)
 
-        encoded_sequences = embedded_sequences + self.pos_encoding[:, :tf.shape(x)[1], :]
-
+        encoded_sequences = embedded_sequences + self.pos_encoding[:, :tf.shape(x)[1],:]
 
         for enc_layer in self.enc_layers:
-            encoded_sequences = enc_layer(encoded_sequences, training = training, mask = None)
+          encoded_sequences = enc_layer(encoded_sequences, training = training, mask = None)
 
-        encoded_sequences = self.dropout(encoded_sequences, training = training)
+        encoded_sequences = self.dropout(encoded_sequences, training=training)
 
         encoded_sequences = self.global_average_pooling(encoded_sequences, training = training)
 
         logits = self.final_layers(encoded_sequences)
 
         return logits
+

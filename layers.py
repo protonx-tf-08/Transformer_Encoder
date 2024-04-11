@@ -11,6 +11,7 @@ from tensorflow.keras.layers import Embedding, Dense, GlobalAveragePooling1D
 
 
 
+
 class MultiHeadAttention(tf.keras.layers.Layer):
     def __init__(self, d_model, num_heads):
         super(MultiHeadAttention, self).__init__()
@@ -23,14 +24,14 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         self.wv = Dense(d_model)
         self.dense = Dense(d_model)
 
-    def scaled_dot_product_attention(self,q,k,v, mask):
+    def scaled_dot_product_attention(self,q,k,v,mask):
 
         dk = tf.cast(tf.shape(k)[-1], dtype = tf.float32)
 
         attention_score = tf.matmul(q,k, transpose_b = True) / (tf.math.sqrt(dk))
 
         if mask is not None:
-            attention_score +- (mask*  -1e10)
+            attention_score += (mask* -1e10)
         weight_attention = tf.nn.softmax(attention_score, axis = -1)
 
         out = tf.matmul(weight_attention, v)
@@ -60,7 +61,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
 
 
 
-        out = scaled_dot_product_attention(heads_qw, heads_kw, heads_vw, mask)
+        out = self.scaled_dot_product_attention(heads_qw, heads_kw, heads_vw, mask = mask)
 
         out = tf.transpose(out, [0,2,1,3])
 
@@ -78,25 +79,24 @@ def point_wise_feed_forward_network(d_model, dff):
     ])
 
 class EncoderLayer(tf.keras.layers.Layer):
-    def __init__(self, d_model, num_heads, dff, rate = 0.1):
+    def __init__(self, d_model, num_heads, dff, rate):
         super(EncoderLayer, self).__init__()
 
         self.mha = MultiHeadAttention(d_model, num_heads)
         self.ffn = point_wise_feed_forward_network(d_model, dff)
-        self.layernorm1 = tf.keras.layers.Normalization()
-        self.layernorm2 = tf.keras.layers.Normalization()
+        self.layernorm1 = tf.keras.layers.LayerNormalization()
+        self.layernorm2 = tf.keras.layers.LayerNormalization()
         self.dropout1 = tf.keras.layers.Dropout(rate = rate)
         self.dropout2 = tf.keras.layers.Dropout(rate = rate)
-    def call(self, x, training , mask):
 
-        mha_out = self.mha(x,x,x,mask=mask)
+    def call(self, x, training, mask):
+        mha_out = self.mha(x, x, x, mask=mask)
 
         x = self.layernorm1(x + self.dropout1(mha_out, training = training))
 
         ffn_out = self.ffn(x)
 
-        out2 = self.layernorm2(x + self.dropout(ffn_out, training = training))
-
+        out2 = self.layernorm2(x + self.dropout2(ffn_out, training=training))
         return out2
 
 
