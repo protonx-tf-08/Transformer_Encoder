@@ -12,7 +12,7 @@ class TransformerClassifier(tf.keras.Model):
         self.dropout = tf.keras.layers.Dropout(rate = rate)
         self.global_average_pooling = tf.keras.layers.GlobalAveragePooling1D()
         self.final_layers = tf.keras.layers.Dense(1, 'sigmoid')
-
+        
     def call(self, x, training):
 
         embedded_sequences = self.embedding(x)
