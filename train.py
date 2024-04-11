@@ -24,8 +24,6 @@ if __name__ == "__main__":
     parser.add_argument("--learning_rate",default=0.001,type=float)
     parser.add_argument("--dropout-rate", default=0.1, type = float)
 
-
-
     home_dir = os.getcwd()
     args = parser.parse_args()
 
