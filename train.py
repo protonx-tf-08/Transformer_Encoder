@@ -13,15 +13,15 @@ if __name__ == "__main__":
     # FIXME
     # Arguments users used when running command lines
 
-    parser.add_argument("--batch_size", default=32, type=int)
+    parser.add_argument("--batch-size", default=32, type=int)
     parser.add_argument("--epochs", default=10, type=int)
-    parser.add_argument("--d_model", default=128, type=int)
-    parser.add_argument("--max_length", default=200,type=int)
-    parser.add_argument("--vocab_size", default=10000, type=int)
+    parser.add_argument("--d-model", default=128, type=int)
+    parser.add_argument("--max-length", default=200,type=int)
+    parser.add_argument("--vocab-size", default=10000, type=int)
     parser.add_argument("--dff", default=512, type=int)
-    parser.add_argument("--num_heads", default=2, type=int)
-    parser.add_argument("--num_encoder_layers",default = 2, type=int)
-    parser.add_argument("--learning_rate",default=0.001,type=float)
+    parser.add_argument("--num-heads", default=2, type=int)
+    parser.add_argument("--num-encoder-layers",default = 2, type=int)
+    parser.add_argument("--learning-rate",default=0.001,type=float)
     parser.add_argument("--dropout-rate", default=0.1, type = float)
 
     home_dir = os.getcwd()
