@@ -13,7 +13,9 @@ Slide about your project (if it's available) <--- **FIXME**
 Architecture Image <--- **FIXME**
 
 
+Thử nghiệm với Colab
 
+<a href="https://colab.research.google.com/drive/1cUVnTe4XN-RFCEYZZZPqSz4roTA_uCHD?usp=sharing#scrollTo=EirC-pofS0VQ"><img src="https://storage.googleapis.com/protonx-cloud-storage/colab_favicon_256px.png" width=80> </a>
 
 ##  Set up environment
 - Step 1: 
