@@ -58,7 +58,7 @@ Training script:
 
 ```python
 
-!python train.py --batch_size 32 --epochs 10 --d_model 128 --max_length 200 --vocab_size 10000 --dff 512 --num_heads 2 --num_encoder_layers 2 --learning_rate 0.001 --dropout 0.1
+!python train.py --batch-size 32 --epochs 10 --d-model 128 --max-length 200 --vocab-size 10000 --dff 512 --num-heads 2 --num-encoder-layers 2 --learning-rate 0.001 --dropout 0.1
 ``` 
 
 
