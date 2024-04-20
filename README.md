@@ -15,7 +15,7 @@ Architecture Image <--- **FIXME**
 
 Thử nghiệm với Colab
 
-<a href="https://colab.research.google.com/drive/1cUVnTe4XN-RFCEYZZZPqSz4roTA_uCHD?usp=sharing#scrollTo=EirC-pofS0VQ"><img src="https://storage.googleapis.com/protonx-cloud-storage/colab_favicon_256px.png" width=80> </a>
+<a href="https://colab.research.google.com/drive/1u1o0CsoO0JodW6wT1rYWg5RIbp3YLlwI#scrollTo=dtQ8PYU2TLM2"><img src="https://storage.googleapis.com/protonx-cloud-storage/colab_favicon_256px.png" width=80> </a>
 
 ##  Set up environment
 - Step 1: 
