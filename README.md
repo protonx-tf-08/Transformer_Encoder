@@ -44,7 +44,7 @@ There are some important arguments for the script you should consider when runni
 - `max-length`
 - `vocab-size`
 - `d-model`:[page 5](https://arxiv.org/pdf/1706.03762.pdf)
-- `num-encoder_layers`
+- `num-encoder-layers`
 - `num-heads`
 - `dff`
 
